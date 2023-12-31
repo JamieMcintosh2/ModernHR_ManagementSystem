@@ -1,0 +1,56 @@
+﻿using System.Text.Json.Serialization;
+using System.Text.Json;
+using RecruitmentService.Data;
+using RecruitmentService.Configurations;
+
+namespace RecruitmentService
+{
+    public class Startup
+    {
+        public Startup(IConfiguration configuration)
+        {
+            Configuration = configuration;
+        }
+
+        public IConfiguration Configuration { get; }
+
+        // This method gets called by the runtime. Use this method to add services to the container.
+        public void ConfigureServices(IServiceCollection services)
+        {
+            //Adding OpenAI so that it can be injected throughout the application
+            services.Configure<OpenAIConfig>(Configuration.GetSection("OpenAI"));
+            services.AddSingleton(Configuration.GetSection("OpenAI").Get<OpenAIConfig>());
+
+            services.AddControllers();
+
+
+            services.AddScoped<IRecruitmentRepo, BasicRecruitmentRepo>();
+            //services.AddScoped<IEmployeeRepo, sqlEmployeeRepo>();
+
+            //Adding services allowing them to be used in the app through dependency injection
+            //services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
+        }
+
+        // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
+        public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
+        {
+            if (env.IsDevelopment())
+            {
+                app.UseDeveloperExceptionPage();
+            }
+
+            app.UseHttpsRedirection();
+
+            app.UseCors("AllowAll");
+
+            app.UseRouting();
+
+            app.UseAuthorization();
+
+            app.UseEndpoints(endpoints =>
+            {
+                endpoints.MapControllers();
+            });
+        }
+    }
+}
