@@ -25,8 +25,11 @@ namespace EmploymentService
         public void ConfigureServices(IServiceCollection services)
         {
             //Adding db conext based on our connection string name
+            var builder = new ConfigurationBuilder();
+            builder.AddUserSecrets<Startup>();
+            var config = builder.Build();
             services.AddDbContext<dbContext>(opt => opt.UseSqlServer
-            (Configuration.GetConnectionString("EmploymentConnection")));
+            (config["ConnectionStrings:EmploymentConnection"]));
 
             services.AddControllers()
                                     .AddNewtonsoftJson(s => {

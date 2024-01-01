@@ -17,9 +17,13 @@ namespace RecruitmentService
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+
+            var builder = new ConfigurationBuilder();
+            builder.AddUserSecrets<Startup>();
+            var config = builder.Build();
             //Adding OpenAI so that it can be injected throughout the application
-            services.Configure<OpenAIConfig>(Configuration.GetSection("OpenAI"));
-            services.AddSingleton(Configuration.GetSection("OpenAI").Get<OpenAIConfig>());
+            services.Configure<OpenAIConfig>(config.GetSection("OpenAI"));
+            services.AddSingleton(config.GetSection("OpenAI").Get<OpenAIConfig>());
 
             services.AddControllers();
 
