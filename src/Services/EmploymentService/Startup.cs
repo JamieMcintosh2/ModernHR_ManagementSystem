@@ -24,6 +24,13 @@ namespace EmploymentService
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddCors(options =>
+            {
+                options.AddPolicy("AllowAll", builder =>
+                    builder.AllowAnyOrigin()
+                           .AllowAnyMethod()
+                           .AllowAnyHeader());
+            });
             //Adding db conext based on our connection string name
             var builder = new ConfigurationBuilder();
             builder.AddUserSecrets<Startup>();
