@@ -5,8 +5,8 @@ namespace RecruitmentService.Data
     public interface IRecruitmentRepo
     {
         //Questions
-        Questions GetQuestionsByID(int ID);
-        Questions CreateQuestions(Questions q);
+        //Questions GetQuestionsByID(int ID);
+        //Questions CreateQuestions(Questions q);
         Task<string> GenerateInterviewQuestions(Questions q);
 
 

@@ -14,26 +14,6 @@ namespace RecruitmentService.Data
             _openAIConfig = openAIConfig;
         }
 
-        public Questions CreateQuestions(Questions q)
-        {
-            if (q == null)
-            {
-                throw new ArgumentNullException(nameof(q));
-            }
-            else
-            {
-                Questions newQuestion = new Questions
-                {
-                    id = q.id,
-                    jobTitle = q.jobTitle,
-                    keySkills = q.keySkills,
-                    behaviouralTraits = q.behaviouralTraits,
-                    interviewFormat = q.interviewFormat
-                };
-                return newQuestion;
-            }
-        }
-
         public async Task<string> GenerateInterviewQuestions(Questions q)
         {
             if (q == null)
@@ -83,7 +63,7 @@ namespace RecruitmentService.Data
                 //Setting the temperature, this controls the randomness of response - closer to 0 more conservative closer to 2 more eccentric/random
                 chat.RequestParameters.Temperature = 0.1;
                 //Providing the model with information about what its expected response will be
-                chat.AppendSystemMessage("You are a HR Professional and you need to create a job advert to recruit new employees. Only provide the job advertisement and no extra information");
+                chat.AppendSystemMessage("You are a HR Professional and you need to create a job advert to recruit new employees. Only provide the job advertisement and no extra information and do not include any special characters in your response such as *");
                 //Supplying it with my prompt
                 chat.AppendUserInput(prompt);
                 //Waiting for response from the AI
@@ -92,9 +72,5 @@ namespace RecruitmentService.Data
             }
         }
 
-        public Questions GetQuestionsByID(int ID)
-        {
-            return new Questions { id = 1, jobTitle = "Software Engineer", keySkills = "dotnet, C#, Docker, Azure", behaviouralTraits = "Teamworking", interviewFormat = "One-on-One" };
-        }
     }
 }

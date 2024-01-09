@@ -22,7 +22,10 @@ namespace RecruitmentService.Controllers
         public async Task<IActionResult> GenerateJobAdvert(JobAdvert advertObject)
         {
             var result = await _repo.GenerateJobAdvert(advertObject);
-            return Ok(result);
+            // Converting the GenerativeAI response from basic text to a json object
+            // This allows the data to be correctly returned when the API is called from web browser
+            var responseObject = new { Result = result }; 
+            return Ok(responseObject);
         }
     }
 }

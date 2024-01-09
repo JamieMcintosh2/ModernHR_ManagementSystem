@@ -19,24 +19,15 @@ namespace RecruitmentService.Controllers
 
         }
 
-        //GET api/questions/2
-        [HttpGet("{ID}")]
-        public ActionResult<Questions> GetQuestionsByID(int ID)
-        {
-            var questionsItem = _repo.GetQuestionsByID(ID);
-            if (questionsItem != null)
-            {
-                return Ok(questionsItem);
-            }
-            return NotFound();
-        }
         //POST api/questions
-
         [HttpPost]
         public async Task<IActionResult> GenerateInterviewQuestions(Questions questionObject)
         {
             var result = await _repo.GenerateInterviewQuestions(questionObject);
-            return Ok(result);
+            // Converting the GenerativeAI response from basic text to a json object
+            // This allows the data to be correctly returned when the API is called from web browser
+            var responseObject = new { Result = result };
+            return Ok(responseObject);
         }
 
     }
