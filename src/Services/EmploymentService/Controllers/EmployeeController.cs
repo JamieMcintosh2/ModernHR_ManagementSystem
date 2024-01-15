@@ -84,7 +84,7 @@ namespace EmploymentService.Controllers
         [HttpPatch("{id}")]
         //ID is passed in from the client request via postman for example
         //Get the Patch document from request
-        public ActionResult PartialEmployeeUpdate(int id, JsonPatchDocument<EmployeeUpdateDto> patchDoc)
+        public ActionResult<EmployeeReadDto> PartialEmployeeUpdate(int id, JsonPatchDocument<EmployeeUpdateDto> patchDoc)
         {
             //Checking if the resource exists
             var empModelFromRepo = _repository.GetEmployeeById(id);
@@ -111,7 +111,8 @@ namespace EmploymentService.Controllers
 
                     //Sends our changes to the Database
                     _repository.saveChanges();
-                    return NoContent();
+                    var updatedEmployeeDto = _mapper.Map<EmployeeReadDto>(_repository.GetEmployeeById(id));
+                    return Ok(updatedEmployeeDto);
                 }
 
             }
