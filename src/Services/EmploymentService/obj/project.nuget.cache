@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "EzcfaYjtYlOpbL9DlphiEC4RAIRgaqeZRdZrvT31hMJyHzKenZr0O/B5efFLLNWK5qaMKnbVvh30VDQCXh3Ckg==",
+  "dgSpecHash": "rY59eGLFCJdTkz34DVnNVK+b9zfM1ZTgXqOoBpRn/HA74DYV2pNjzFDq2LksoLJq9YGHRQfntG6LTz62P5xEGg==",
   "success": true,
   "projectFilePath": "D:\\HRMSMiroservice\\src\\Services\\EmploymentService\\EmploymentService.csproj",
   "expectedPackageFiles": [
@@ -34,6 +34,7 @@
     "C:\\Users\\Jamie\\.nuget\\packages\\microsoft.identitymodel.protocols.openidconnect\\6.8.0\\microsoft.identitymodel.protocols.openidconnect.6.8.0.nupkg.sha512",
     "C:\\Users\\Jamie\\.nuget\\packages\\microsoft.identitymodel.tokens\\6.8.0\\microsoft.identitymodel.tokens.6.8.0.nupkg.sha512",
     "C:\\Users\\Jamie\\.nuget\\packages\\microsoft.netcore.platforms\\3.1.0\\microsoft.netcore.platforms.3.1.0.nupkg.sha512",
+    "C:\\Users\\Jamie\\.nuget\\packages\\microsoft.visualstudio.azure.containers.tools.targets\\1.19.4\\microsoft.visualstudio.azure.containers.tools.targets.1.19.4.nupkg.sha512",
     "C:\\Users\\Jamie\\.nuget\\packages\\microsoft.win32.registry\\4.7.0\\microsoft.win32.registry.4.7.0.nupkg.sha512",
     "C:\\Users\\Jamie\\.nuget\\packages\\microsoft.win32.systemevents\\4.7.0\\microsoft.win32.systemevents.4.7.0.nupkg.sha512",
     "C:\\Users\\Jamie\\.nuget\\packages\\newtonsoft.json\\13.0.1\\newtonsoft.json.13.0.1.nupkg.sha512",

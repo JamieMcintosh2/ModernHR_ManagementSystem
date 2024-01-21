@@ -35,8 +35,39 @@ namespace EmploymentService
             var builder = new ConfigurationBuilder();
             builder.AddUserSecrets<Startup>();
             var config = builder.Build();
-            services.AddDbContext<dbContext>(opt => opt.UseSqlServer
-            (config["ConnectionStrings:EmploymentConnection"]));
+
+            // Checking if we're running in Azure
+            var isRunningInAzure = !string.IsNullOrEmpty(Environment.GetEnvironmentVariable("WEBSITE_SITE_NAME"));
+
+            // Checking if we're running locally or in Docker container
+            var isRunningInDocker = Environment.GetEnvironmentVariable("DOTNET_RUNNING_IN_CONTAINER");
+
+            if (isRunningInAzure)
+            {
+                // For Azure
+                var connectionString = Environment.GetEnvironmentVariable("Azure_EmploymentConnection");
+                services.AddDbContext<dbContext>(opt => opt.UseSqlServer(connectionString));
+            }
+            else if (isRunningInDocker == "true")
+            {
+                // For Docker
+                var connectionString = Environment.GetEnvironmentVariable("ConnectionStrings__EmploymentConnection");
+                services.AddDbContext<dbContext>(opt => opt.UseSqlServer(connectionString));
+            }
+            else
+            {
+                // For local
+                var connectionString = Configuration.GetConnectionString("EmploymentConnection");
+                services.AddDbContext<dbContext>(opt => opt.UseSqlServer(connectionString));
+            }
+
+            //For Docker?
+            //var connectionString = Environment.GetEnvironmentVariable("ConnectionStrings__EmploymentConnection");
+            //services.AddDbContext<dbContext>(opt => opt.UseSqlServer(connectionString));
+
+            //For local?
+            /*services.AddDbContext<dbContext>(opt => opt.UseSqlServer
+             (config["ConnectionStrings:EmploymentConnection"]));*/
 
             services.AddControllers()
                                     .AddNewtonsoftJson(s => {
@@ -47,11 +78,13 @@ namespace EmploymentService
 
             services.AddScoped<IEmploymentRepo, SqlEmploymentRepo>();
 
+
             //services.AddScoped<IEmploymentRepo, sqlEmploymentRepo>();
 
+            //For Hardcoded connection string
             //Adding db conext based on our connection string name
-            // services.AddDbContext<EmployeeContext>(opt => opt.UseSqlServer
-            // (Configuration.GetConnectionString("EmploymentConnection")));
+            /*services.AddDbContext<dbContext>(opt => opt.UseSqlServer
+             (Configuration.GetConnectionString("EmploymentConnection")));*/
 
 
 
@@ -62,6 +95,8 @@ namespace EmploymentService
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
+            //Removed for Docker
+            
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
