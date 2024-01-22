@@ -1,0 +1,15 @@
+﻿version: '3.8'
+services: 
+    recruitmentservice:
+        build: .
+        ports:
+        - "8008:80"
+        - "8009:443"
+        environment:
+            ASPNETCORE_URLS: "https://+;http://+"
+            ASPNETCORE_HTTPS_PORT: "8009"
+            ASPNETCORE_ENVIRONMENT: "Development"
+            OpenAI__Key: ${KEY}
+        volumes:
+            - ${APPDATA}\microsoft\UserSecrets\:/root/.microsoft/usersecrets
+            - ${USERPROFILE}\.aspnet\https:/root/.aspnet/https/

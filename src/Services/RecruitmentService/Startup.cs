@@ -28,9 +28,37 @@ namespace RecruitmentService
             var builder = new ConfigurationBuilder();
             builder.AddUserSecrets<Startup>();
             var config = builder.Build();
-            //Adding OpenAI so that it can be injected throughout the application
-            services.Configure<OpenAIConfig>(config.GetSection("OpenAI"));
-            services.AddSingleton(config.GetSection("OpenAI").Get<OpenAIConfig>());
+
+            // Checking if we're running in Azure
+            var isRunningInAzure = !string.IsNullOrEmpty(Environment.GetEnvironmentVariable("WEBSITE_SITE_NAME"));
+
+            // Checking if we're running locally or in Docker container
+            var isRunningInDocker = Environment.GetEnvironmentVariable("DOTNET_RUNNING_IN_CONTAINER");
+
+            if (isRunningInAzure)
+            {
+                // For Azure
+                var openAiKey = Environment.GetEnvironmentVariable("OpenAI__Key");
+                services.Configure<OpenAIConfig>(options => options.Key = openAiKey);
+                services.AddSingleton<OpenAIConfig>(new OpenAIConfig { Key = openAiKey });
+            }
+            else if (isRunningInDocker == "true")
+            {
+                // For Docker
+                var openAiKey = Environment.GetEnvironmentVariable("OpenAI__Key");
+                services.Configure<OpenAIConfig>(options => options.Key = openAiKey);
+                services.AddSingleton<OpenAIConfig>(new OpenAIConfig { Key = openAiKey });
+
+            }
+            else
+            {
+                // For local
+                //Adding OpenAI so that it can be injected throughout the application
+                services.Configure<OpenAIConfig>(config.GetSection("OpenAI"));
+                services.AddSingleton(config.GetSection("OpenAI").Get<OpenAIConfig>());
+            }
+
+
 
             services.AddControllers();
 

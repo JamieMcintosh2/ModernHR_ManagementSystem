@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "E3FMtFLr5F2JaSzO7+pF6AvHoWn9c3wC+vZldjqk9jFcGmqU1blSTOiY6ntcnMtwx4IdIGUp+1QZIYKJRHMbWQ==",
+  "dgSpecHash": "Prs7DYAdZyqA7iFLkQ4n1vo9yD7dl9JDQH8ew7glGZllzet1uIBNZ7ji6qgSH5ViPxzkk+tLqXGx7mMRQZgAlw==",
   "success": true,
   "projectFilePath": "D:\\HRMSMiroservice\\src\\Services\\ProfileService\\ProfileService.csproj",
   "expectedPackageFiles": [
@@ -40,6 +40,7 @@
     "C:\\Users\\Jamie\\.nuget\\packages\\microsoft.identitymodel.tokens\\6.8.0\\microsoft.identitymodel.tokens.6.8.0.nupkg.sha512",
     "C:\\Users\\Jamie\\.nuget\\packages\\microsoft.net.http.headers\\2.2.0\\microsoft.net.http.headers.2.2.0.nupkg.sha512",
     "C:\\Users\\Jamie\\.nuget\\packages\\microsoft.netcore.platforms\\3.1.0\\microsoft.netcore.platforms.3.1.0.nupkg.sha512",
+    "C:\\Users\\Jamie\\.nuget\\packages\\microsoft.visualstudio.azure.containers.tools.targets\\1.19.4\\microsoft.visualstudio.azure.containers.tools.targets.1.19.4.nupkg.sha512",
     "C:\\Users\\Jamie\\.nuget\\packages\\microsoft.win32.registry\\4.7.0\\microsoft.win32.registry.4.7.0.nupkg.sha512",
     "C:\\Users\\Jamie\\.nuget\\packages\\microsoft.win32.systemevents\\4.7.0\\microsoft.win32.systemevents.4.7.0.nupkg.sha512",
     "C:\\Users\\Jamie\\.nuget\\packages\\newtonsoft.json\\13.0.1\\newtonsoft.json.13.0.1.nupkg.sha512",

@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "9L6EMkLDLJPyusKtA07UZvQJ9zxCftWOxDiNJvlV5+5EHbCAaaXjBUqlJc35p37FRuvXE/dGtiB/8+nHd0F/Xg==",
+  "dgSpecHash": "6AdCk+vIfP+5z7mdlWEPIqag1p+e7BTXhqvs7+oKANMSyjL5buAYu9fql6AU1F8YtzmwkODz59Ff22VekNvDJg==",
   "success": true,
   "projectFilePath": "D:\\HRMSMiroservice\\src\\Services\\RecruitmentService\\RecruitmentService.csproj",
   "expectedPackageFiles": [
@@ -14,6 +14,7 @@
     "C:\\Users\\Jamie\\.nuget\\packages\\microsoft.extensions.logging.abstractions\\2.1.0\\microsoft.extensions.logging.abstractions.2.1.0.nupkg.sha512",
     "C:\\Users\\Jamie\\.nuget\\packages\\microsoft.extensions.options\\2.1.0\\microsoft.extensions.options.2.1.0.nupkg.sha512",
     "C:\\Users\\Jamie\\.nuget\\packages\\microsoft.extensions.primitives\\2.1.0\\microsoft.extensions.primitives.2.1.0.nupkg.sha512",
+    "C:\\Users\\Jamie\\.nuget\\packages\\microsoft.visualstudio.azure.containers.tools.targets\\1.19.4\\microsoft.visualstudio.azure.containers.tools.targets.1.19.4.nupkg.sha512",
     "C:\\Users\\Jamie\\.nuget\\packages\\newtonsoft.json\\13.0.3\\newtonsoft.json.13.0.3.nupkg.sha512",
     "C:\\Users\\Jamie\\.nuget\\packages\\openai\\1.10.0\\openai.1.10.0.nupkg.sha512",
     "C:\\Users\\Jamie\\.nuget\\packages\\system.memory\\4.5.0\\system.memory.4.5.0.nupkg.sha512",
