@@ -54,21 +54,18 @@ namespace ProfileService
             {
                 // For Azure
                 var connectionString = Environment.GetEnvironmentVariable("Azure_EmploymentConnection");
-                Console.WriteLine("Azure - " + connectionString);
                 services.AddDbContext<EmployeeContext>(opt => opt.UseSqlServer(connectionString));
             }
             else if (isRunningInDocker == "true")
             {
                 // For Docker
                 var connectionString = Environment.GetEnvironmentVariable("ConnectionStrings__ProfileConnection");
-                Console.WriteLine("Docker - " + connectionString);
                 services.AddDbContext<EmployeeContext>(opt => opt.UseSqlServer(connectionString));
             }
             else
             {
                 // For local
                 var connectionString = Configuration.GetConnectionString("ProfileConnection");
-                Console.WriteLine("Local - " + connectionString);
                 services.AddDbContext<EmployeeContext>(opt => opt.UseSqlServer(connectionString));
             }
 
