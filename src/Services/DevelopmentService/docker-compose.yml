@@ -1,0 +1,15 @@
+﻿version: '3.8'
+services: 
+    developmentservice:
+        build: .
+        ports:
+        - "8010:80"
+        - "8020:443"
+        environment:
+            ASPNETCORE_URLS: "https://+;http://+"
+            ASPNETCORE_HTTPS_PORT: "8020"
+            ASPNETCORE_ENVIRONMENT: "Development"
+            ConnectionStrings__DevelopmentConnection: ${DB_CONNECTION_STRING}
+        volumes:
+            - ${APPDATA}\microsoft\UserSecrets\:/root/.microsoft/usersecrets
+            - ${USERPROFILE}\.aspnet\https:/root/.aspnet/https/
